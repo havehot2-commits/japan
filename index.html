@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 홋카이도 겨울 여행</title>
+  <style>
+    :root {
+      --sky: #dff3ff;
+      --sky-deep: #92ccea;
+      --blue: #246b91;
+      --navy: #183b52;
+      --ice: #f6fcff;
+      --white: #ffffff;
+      --line: #cfe5f0;
+      --text: #20323d;
+      --muted: #617681;
+      --green: #18794e;
+      --green-bg: #e6f7ee;
+      --yellow: #8a6500;
+      --yellow-bg: #fff5c7;
+      --red: #9f3030;
+      --red-bg: #ffebeb;
+      --shadow: 0 8px 24px rgba(39, 92, 119, 0.12);
+      --radius: 18px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        linear-gradient(rgba(255,255,255,.78), rgba(255,255,255,.78)),
+        linear-gradient(135deg, #e6f7ff 0%, #f8fdff 45%, #eaf6fc 100%);
+      font-family: Arial, "Noto Sans KR", sans-serif;
+      font-size: 17px;
+      line-height: 1.65;
+      word-break: keep-all;
+    }
+
+    a {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #f2ad38;
+      outline-offset: 3px;
+    }
+
+    .snow-art {
+      position: relative;
+      min-height: 270px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 12% 24%, #fff 0 4px, transparent 5px),
+        radial-gradient(circle at 86% 18%, #fff 0 5px, transparent 6px),
+        radial-gradient(circle at 65% 55%, #fff 0 3px, transparent 4px),
+        linear-gradient(155deg, #8dcae8, #e7f8ff);
+    }
+
+    .snow-art::before,
+    .snow-art::after {
+      content: "✦  ❄  ✧  ❄  ✦  ❄  ✧";
+      position: absolute;
+      color: rgba(255,255,255,.78);
+      font-size: 26px;
+      letter-spacing: 20px;
+      white-space: nowrap;
+      animation: drift 18s linear infinite;
+    }
+
+    .snow-art::before {
+      top: 36px;
+      left: -60px;
+    }
+
+    .snow-art::after {
+      top: 125px;
+      right: -90px;
+      animation-duration: 24s;
+      animation-direction: reverse;
+    }
+
+    @keyframes drift {
+      from { transform: translateX(0); }
+      to { transform: translateX(120px); }
+    }
+
+    .mountain {
+      position: absolute;
+      bottom: -1px;
+      width: 0;
+      height: 0;
+      border-left: 210px solid transparent;
+      border-right: 210px solid transparent;
+      border-bottom: 180px solid rgba(255,255,255,.9);
+    }
+
+    .mountain.one {
+      left: -90px;
+    }
+
+    .mountain.two {
+      left: 220px;
+      border-left-width: 260px;
+      border-right-width: 260px;
+      border-bottom-width: 225px;
+      opacity: .78;
+    }
+
+    .mountain.three {
+      right: -130px;
+      border-left-width: 300px;
+      border-right-width: 300px;
+      border-bottom-width: 205px;
+      opacity: .7;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 42px 20px 36px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      padding: 5px 12px;
+      border-radius: 999px;
+      color: var(--navy);
+      background: rgba(255,255,255,.82);
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: var(--navy);
+      line-height: 1.3;
+    }
+
+    h1 {
+      max-width: 760px;
+      margin: 16px 0 12px;
+      font-size: clamp(32px, 6vw, 58px);
+      letter-spacing: -2px;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(24px, 4vw, 34px);
+    }
+
+    h3 {
+      margin: 0 0 8px;
+      font-size: 21px;
+    }
+
+    .hero-summary {
+      max-width: 730px;
+      margin: 0;
+      color: #234c63;
+      font-size: 19px;
+      font-weight: 700;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .notice {
+      margin: 24px 0;
+      padding: 18px 20px;
+      border-left: 6px solid var(--blue);
+      border-radius: 12px;
+      background: #eef9ff;
+    }
+
+    .notice strong {
+      color: var(--navy);
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 24px 0;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 16px;
+      border: 1px solid var(--blue);
+      border-radius: 11px;
+      color: #fff;
+      background: var(--blue);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--blue);
+      background: #fff;
+    }
+
+    .button.warning {
+      border-color: #9a7413;
+      background: #9a7413;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .card,
+    .day-card,
+    .restaurant-card,
+    .checklist-box {
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,.94);
+      box-shadow: var(--shadow);
+    }
+
+    .section {
+      margin: 42px 0;
+      scroll-margin-top: 20px;
+    }
+
+    .section-intro {
+      margin-top: -8px;
+      color: var(--muted);
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin: 0;
+    }
+
+    .fact {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--ice);
+    }
+
+    .fact dt {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .fact dd {
+      margin: 5px 0 0;
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .badge {
+      display: inline-block;
+      margin: 0 4px 5px 0;
+      padding: 3px 9px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      vertical-align: middle;
+    }
+
+    .badge.confirmed {
+      color: var(--green);
+      background: var(--green-bg);
+    }
+
+    .badge.candidate {
+      color: var(--yellow);
+      background: var(--yellow-bg);
+    }
+
+    .badge.pending {
+      color: var(--red);
+      background: var(--red-bg);
+    }
+
+    .badge.info {
+      color: var(--blue);
+      background: var(--sky);
+    }
+
+    .days {
+      display: grid;
+      gap: 20px;
+    }
+
+    .day-card {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .day-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 9px;
+      height: 100%;
+      background: var(--sky-deep);
+    }
+
+    .day-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+      padding-left: 10px;
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 13px;
+      margin-bottom: 16px;
+    }
+
+    .date {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .day-title {
+      margin: 0;
+      font-size: 25px;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .timeline li {
+      display: grid;
+      grid-template-columns: 80px minmax(0, 1fr);
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px dashed #dcecf3;
+    }
+
+    .timeline li:last-child {
+      border-bottom: 0;
+    }
+
+    .time {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    .subbox {
+      margin-top: 17px;
+      padding: 16px;
+      border-radius: 12px;
+      background: var(--ice);
+    }
+
+    .subbox.warning {
+      background: #fffaf0;
+      border: 1px solid #f0d78b;
+    }
+
+    .subbox h3 {
+      font-size: 18px;
+    }
+
+    ul.clean {
+      margin: 8px 0 0;
+      padding-left: 22px;
+    }
+
+    .restaurant-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .restaurant-card {
+      border-top: 5px solid #f0cc5b;
+    }
+
+    .restaurant-card h3 {
+      margin-top: 7px;
+    }
+
+    .restaurant-card ul {
+      margin-bottom: 0;
+    }
+
+    .map-button {
+      display: inline-flex;
+      margin-top: 10px;
+      padding: 8px 12px;
+      border: 1px solid var(--blue);
+      border-radius: 9px;
+      color: var(--blue);
+      background: #fff;
+      text-decoration: none;
+      font-size: 15px;
+    }
+
+    .source-list {
+      display: grid;
+      gap: 10px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .source-list li {
+      padding: 13px 15px;
+      border-radius: 10px;
+      background: var(--ice);
+    }
+
+    .checklist-box {
+      background: linear-gradient(180deg, #fff, #f5fbff);
+    }
+
+    .progress-summary {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+      padding: 16px;
+      border-radius: 13px;
+      background: var(--sky);
+    }
+
+    .progress-number {
+      color: var(--navy);
+      font-size: 25px;
+      font-weight: 800;
+    }
+
+    .progress-bar {
+      width: min(360px, 100%);
+      height: 13px;
+      overflow: hidden;
+      border-radius: 999px;
+      background: #fff;
+    }
+
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: var(--blue);
+      transition: width .2s ease;
+    }
+
+    .check-group {
+      margin-top: 20px;
+    }
+
+    .check-group h3 {
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--line);
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-height: 50px;
+      padding: 10px 4px;
+      border-bottom: 1px solid #e3eff4;
+    }
+
+    .check-item input {
+      width: 22px;
+      height: 22px;
+      flex: 0 0 auto;
+      accent-color: var(--blue);
+    }
+
+    .check-item label {
+      flex: 1;
+      cursor: pointer;
+    }
+
+    .check-item input:checked + label {
+      color: var(--muted);
+      text-decoration: line-through;
+    }
+
+    .print-status {
+      display: none;
+      margin-left: 8px;
+      color: var(--green);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .storage-message {
+      min-height: 25px;
+      margin: 12px 0 0;
+      color: var(--red);
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .share-box {
+      padding: 18px;
+      border-radius: 12px;
+      background: #f7fbfd;
+    }
+
+    .share-fallback {
+      display: none;
+      margin-top: 12px;
+    }
+
+    .share-fallback input {
+      width: 100%;
+      min-height: 44px;
+      padding: 8px 10px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .small {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    footer {
+      margin: 55px 0 30px;
+      padding: 24px 0;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    @media (max-width: 760px) {
+      body {
+        font-size: 17px;
+      }
+
+      .page {
+        width: min(100% - 22px, 1120px);
+      }
+
+      .grid,
+      .restaurant-grid,
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      .card,
+      .day-card,
+      .restaurant-card,
+      .checklist-box {
+        padding: 18px;
+      }
+
+      .hero-content {
+        padding: 34px 16px 30px;
+      }
+
+      .snow-art {
+        min-height: 255px;
+      }
+
+      .timeline li {
+        grid-template-columns: 66px minmax(0, 1fr);
+        gap: 8px;
+      }
+
+      .toolbar .button {
+        width: 100%;
+      }
+
+      .mountain.two {
+        left: 120px;
+      }
+
+      .mountain.three {
+        right: -280px;
+      }
+    }
+
+    @media print {
+      body {
+        color: #111;
+        background: #fff;
+        font-size: 12pt;
+      }
+
+      .snow-art,
+      .toolbar,
+      .map-button,
+      .share-box,
+      .storage-message,
+      .reset-area,
+      .button,
+      .notice.print-hide {
+        display: none !important;
+      }
+
+      .page {
+        width: 100%;
+      }
+
+      .section,
+      .day-card,
+      .card,
+      .restaurant-card,
+      .checklist-box {
+        break-inside: avoid;
+        box-shadow: none;
+      }
+
+      .card,
+      .day-card,
+      .restaurant-card,
+      .checklist-box {
+        border: 1px solid #aaa;
+      }
+
+      .print-status {
+        display: inline;
+      }
+
+      a {
+        color: #111;
+        text-decoration: none;
+      }
+
+      .check-item input {
+        display: none;
+      }
+
+      .check-item input:checked + label::after {
+        content: "  [준비 완료]";
+        color: #18794e;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      .check-item input:not(:checked) + label::after {
+        content: "  [미준비]";
+        color: #9f3030;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      footer {
+        margin-top: 25px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="snow-art" aria-label="눈 내리는 북해도를 표현한 장식">
+    <div class="mountain one"></div>
+    <div class="mountain two"></div>
+    <div class="mountain three"></div>
+
+    <div class="hero-content">
+      <span class="eyebrow">FRIENDS TRIP · HOKKAIDO</span>
+      <h1>2026 홋카이도 겨울 여행</h1>
+      <p class="hero-summary">
+        2026년 11월 19일부터 22일까지, 친구 4명이 함께 확인하는
+        북해도 3박 4일 여행 일정과 준비물 체크리스트입니다.
+      </p>
+    </div>
+  </header>
+
+  <main class="page">
+    <div class="notice print-hide">
+      <strong>공개 링크 안내</strong><br>
+      이 페이지는 친구들과 공유하는 공개 여행 페이지입니다.
+      가족·친구만 접근할 수 있는 비공개 공간이 아니므로 전화번호,
+      예약번호, 실명, 상세 주소와 같은 개인정보는 포함하지 않았습니다.
+    </div>
+
+    <div class="toolbar print-hide">
+      <button class="button" id="shareButton" type="button">현재 페이지 공유</button>
+      <button class="button secondary" id="printButton" type="button">인쇄·PDF 저장</button>
+      <a class="button secondary" href="#checklist">준비물 체크리스트로 이동</a>
+    </div>
+
+    <section class="section" id="summary">
+      <h2>여행 요약</h2>
+      <div class="grid">
+        <div class="card">
+          <dl class="facts">
+            <div class="fact">
+              <dt>여행 지역</dt>
+              <dd>홋카이도, 일본</dd>
+            </div>
+            <div class="fact">
+              <dt>여행 기간</dt>
+              <dd>2026.11.19 ~ 11.22</dd>
+            </div>
+            <div class="fact">
+              <dt>여행 인원</dt>
+              <dd>성인 4명</dd>
+            </div>
+            <div class="fact">
+              <dt>이동 중심</dt>
+              <dd>노랑풍선 패키지</dd>
+            </div>
+            <div class="fact">
+              <dt>예산</dt>
+              <dd>1인 약 150만 원</dd>
+            </div>
+            <div class="fact">
+              <dt>걷기 목표</dt>
+              <dd>하루 약 5,000~7,000보</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="card">
+          <h3>항공·이동 조건</h3>
+          <ul class="clean">
+            <li>출발 공항: 인천공항</li>
+            <li>11월 19일 신치토세공항 13:00~15:00 도착 희망</li>
+            <li>11월 22일 신치토세공항 17:25 출발 항공편</li>
+            <li>실제 항공사·편명·좌석·예약 정보는 미정</li>
+            <li>패키지 버스에 큰 캐리어 보관 요청 예정</li>
+            <li>후라노는 패키지 이동 중 실제 경유할 때만 반영</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="schedule">
+      <h2>날짜별 일정</h2>
+      <p class="section-intro">
+        아래 시간은 실제 예약 시간이 아닌 계획 시간입니다.
+        확인되지 않은 이동시간은 임의의 숫자로 표시하지 않았습니다.
+      </p>
+
+      <div class="days">
+        <article class="day-card">
+          <div class="day-header">
+            <div>
+              <div class="date">11월 19일 목요일 · 1일차</div>
+              <h3 class="day-title">인천공항 → 신치토세공항 → 노보리베츠 온천</h3>
+            </div>
+            <span class="badge confirmed">숙소·석식 사용자 확인</span>
+          </div>
+
+          <ul class="timeline">
+            <li><span class="time">오전</span><span>인천공항 출발</span></li>
+            <li><span class="time">오후</span><span>신치토세공항 도착 희망 시간: 13:00~15:00</span></li>
+            <li><span class="time">이후</span><span>노랑풍선 패키지 일정에 따라 노보리베츠 이동</span></li>
+            <li><span class="time">저녁</span><span>호텔 마호로바 체크인 및 석식</span></li>
+            <li><span class="time">밤</span><span>노보리베츠 온천 휴식</span></li>
+          </ul>
+
+          <div class="subbox">
+            <strong>숙소:</strong> 호텔 마호로바 · 노보리베츠 온천<br>
+            <strong>석식:</strong> 사용자 예약 플랜 기준 포함
+            <a class="map-button" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%9E%E3%83%9B%E3%83%AD%E3%83%90%20%E3%83%8E%E3%83%9C%E3%83%AA%E3%83%99%E3%83%84" target="_blank" rel="noopener noreferrer">호텔 마호로바 지도 보기</a>
+          </div>
+
+          <div class="subbox warning">
+            <strong>확인 필요:</strong>
+            공항 도착 후 이동시간과 노보리베츠 도착 시각은 패키지 일정표를 확인해야 합니다.
+            외부 관광은 별도로 확정하지 않습니다.
+          </div>
+
+          <div class="subbox">
+            <strong>우천·피로 대안:</strong>
+            호텔 온천과 숙소 휴식 중심으로 전환합니다.
+            운영 여부와 이용 가능 시간은 방문 전 확인합니다.
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-header">
+            <div>
+              <div class="date">11월 20일 금요일 · 2일차</div>
+              <h3 class="day-title">노보리베츠 → 소운쿄 온천</h3>
+            </div>
+            <span class="badge confirmed">숙소·석식 사용자 확인</span>
+          </div>
+
+          <ul class="timeline">
+            <li><span class="time">오전</span><span>호텔 조식 및 호텔 마호로바 체크아웃</span></li>
+            <li><span class="time">낮</span><span>노랑풍선 패키지 버스로 소운쿄 이동</span></li>
+            <li><span class="time">오후</span><span>패키지 일정에 포함된 관광지 방문</span></li>
+            <li><span class="time">저녁</span><span>호텔 다이세츠 체크인 및 석식</span></li>
+            <li><span class="time">밤</span><span>소운쿄 온천 휴식</span></li>
+          </ul>
+
+          <div class="subbox">
+            <strong>숙소:</strong> 호텔 다이세츠 ONSEN &amp; CANYON RESORT · 소운쿄 온천<br>
+            <strong>석식:</strong> 사용자 예약 플랜 기준 포함
+            <a class="map-button" href="https://www.google.com/maps/search/?api=1&query=%E3%83%9B%E3%83%86%E3%83%AB%E3%83%80%E3%82%A4%E3%82%BB%E3%83%84%20ONSEN%20%26%20CANYON%20RESORT" target="_blank" rel="noopener noreferrer">호텔 다이세츠 지도 보기</a>
+          </div>
+
+          <div class="subbox warning">
+            <strong>확인 필요:</strong>
+            소운쿄 도착 시각, 패키지 관광지, 자유시간은 패키지 일정표를 확인합니다.
+          </div>
+
+          <div class="subbox">
+            <strong>우천·피로 대안:</strong>
+            패키지 일정에 따라 실내 또는 호텔 휴식 중심으로 조정합니다.
+            실제 운영 여부는 현지에서 확인합니다.
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-header">
+            <div>
+              <div class="date">11월 21일 토요일 · 3일차</div>
+              <h3 class="day-title">소운쿄 → 비에이 경유·하차 → 삿포로</h3>
+            </div>
+            <span class="badge candidate">비에이 코스 후보</span>
+          </div>
+
+          <ul class="timeline">
+            <li><span class="time">오전</span><span>호텔 조식 및 호텔 다이세츠 체크아웃</span></li>
+            <li><span class="time">오전</span><span>노랑풍선 패키지 버스로 소운쿄 출발</span></li>
+            <li><span class="time">낮</span><span>패키지 일정에 따라 비에이 경유</span></li>
+            <li><span class="time">낮</span><span>일정표에 명시된 경우 비에이 하차</span></li>
+            <li><span class="time">이후</span><span>캐리어 패키지 버스 보관 요청 및 비에이 겨울 코스 연결 가능 여부 확인</span></li>
+            <li><span class="time">저녁</span><span>삿포로 이동, 삿포로 파크호텔 체크인</span></li>
+            <li><span class="time">밤</span><span>가능하면 해산물·초밥 저녁</span></li>
+          </ul>
+
+          <div class="subbox">
+            <strong>숙소:</strong> 삿포로 파크호텔 · 삿포로
+            <a class="map-button" href="https://www.google.com/maps/search/?api=1&query=%EC%82%BF%ED%8F%AC%EB%A1%9C%20%ED%8C%8C%ED%81%AC%ED%98%B8%ED%85%94" target="_blank" rel="noopener noreferrer">삿포로 파크호텔 지도 보기</a>
+          </div>
+
+          <div class="subbox warning">
+            <strong>패키지 우선 원칙:</strong>
+            비에이 겨울 코스가 패키지 일정과 연결되지 않으면 코스는 제외하고
+            패키지 일정을 우선합니다. 후라노는 실제 경유할 때만 표시합니다.
+          </div>
+
+          <div class="subbox">
+            <strong>우천·일정 불가 대안:</strong>
+            비에이 겨울 코스를 제외하고 패키지 일정에 따릅니다.
+            늦은 식사가 무리하면 식당을 임의로 대체하지 않고 호텔 휴식을 우선합니다.
+          </div>
+        </article>
+
+        <article class="day-card">
+          <div class="day-header">
+            <div>
+              <div class="date">11월 22일 일요일 · 4일차</div>
+              <h3 class="day-title">삿포로 → 오타루 → 신치토세공항 → 인천공항</h3>
+            </div>
+            <span class="badge confirmed">오타루 활동 확정</span>
+          </div>
+
+          <ul class="timeline">
+            <li><span class="time">오전</span><span>삿포로 파크호텔 체크아웃</span></li>
+            <li><span class="time">오전</span><span>오타루 이동</span></li>
+            <li><span class="time">오전</span><span>오타루 오르골당 방문</span></li>
+            <li><span class="time">낮</span><span>사카이마치 거리 쇼핑·카페</span></li>
+            <li><span class="time">가능 시</span><span>오타루 운하 산책</span></li>
+            <li><span class="time">점심</span><span>현지 결정: 해산물 덮밥·초밥·라멘 등</span></li>
+            <li><span class="time">이후</span><span>신치토세공항 이동</span></li>
+            <li><span class="time">17:25</span><span>출발 항공편 탑승</span></li>
+          </ul>
+
+          <div class="subbox">
+            <strong>확정 활동:</strong> 오르골당, 사카이마치 쇼핑·카페
+            <br>
+            <a class="map-button" href="https://www.google.com/maps/search/?api=1&query=%EC%98%A4%ED%83%80%EB%A3%A8%20%EC%98%A4%EB%A5%B4%EA%B3%A8%EB%8B%B9" target="_blank" rel="noopener noreferrer">오타루 오르골당 지도 보기</a>
+            <a class="map-button" href="https://www.google.com/maps/search/?api=1&query=%EC%82%AC%EC%B9%B4%EC%9D%B4%EB%A7%88%EC%B9%98%20%EA%B1%B0%EB%A6%AC%20%EC%98%A4%ED%83%80%EB%A3%A8" target="_blank" rel="noopener noreferrer">사카이마치 거리 지도 보기</a>
+          </div>
+
+          <div class="subbox warning">
+            <strong>공항 이동 주의:</strong>
+            17:25 국제선 출발을 기준으로 공항 이동 여유를 확보합니다.
+            항공사별 수속 기준, 수하물 위탁, 오타루 체류 종료 시각은 확인 필요합니다.
+            오타루 관광을 무리하게 연장하지 않습니다.
+          </div>
+
+          <div class="subbox">
+            <strong>우천·피로 대안:</strong>
+            오르골당과 실내 매장 중심으로 구성하고 운하 산책은 생략할 수 있습니다.
+            공항 이동을 우선합니다.
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="biei">
+      <h2>비에이 겨울 코스 후보</h2>
+      <div class="card">
+        <span class="badge candidate">후보</span>
+        <span class="badge pending">연결 여부 미정</span>
+        <p>
+          패키지 일정과 연결될 때만 참여합니다.
+          패키지 버스가 비에이에 16:35 이전 도착하는지,
+          비에이 하차 장소에서 겨울 코스 집결지까지 이동 가능한지 확인해야 합니다.
+        </p>
+
+        <dl class="facts">
+          <div class="fact">
+            <dt>후보 방문지</dt>
+            <dd>시로가네 비르케 숲<br>청의 호수</dd>
+          </div>
+          <div class="fact">
+            <dt>계획 시간</dt>
+            <dd>16:35 출발<br>18:30 도착 예정</dd>
+          </div>
+          <div class="fact">
+            <dt>요금 안내</dt>
+            <dd>성인 1인 4,000엔부터</dd>
+          </div>
+        </dl>
+
+        <div class="subbox warning">
+          <strong>중요:</strong>
+          11월 21일 참여 가능성이 있지만 확정하지 않습니다.
+          패키지 일정과 연결되지 않으면 “참여 불가 또는 미정”으로 처리하고
+          다른 관광지를 임의로 추가하지 않습니다.
+        </div>
+
+        <p class="small">
+          방문 전 운영 기간·요일·시간·요금·집결지·버스 보관 가능 여부를 다시 확인하세요.
+          후라노는 패키지 이동 중 실제 경유할 때만 반영합니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="restaurants">
+      <h2>식사 및 식당 후보</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="badge confirmed">확정</span>
+          <h3>11월 19일 저녁</h3>
+          <p>
+            호텔 마호로바 석식<br>
+            <span class="small">사용자 예약 플랜 기준</span>
+          </p>
+        </div>
+
+        <div class="card">
+          <span class="badge confirmed">확정</span>
+          <h3>11월 20일 저녁</h3>
+          <p>
+            호텔 다이세츠 석식<br>
+            <span class="small">사용자 예약 플랜 기준</span>
+          </p>
+        </div>
+      </div>
+
+      <h3 style="margin-top:24px;">11월 21일 삿포로 저녁 후보</h3>
+      <div class="restaurant-grid">
+        <article class="restaurant-card">
+          <span class="badge candidate">후보</span>
+          <h3>이로리안</h3>
+          <p>홋카이도 해산물 중심 이자카야</p>
+          <ul class="clean">
+            <li>해산물 선호와 4명 메뉴 공유에 맞는 후보</li>
+            <li>가격 및 실제 예산 적합성 미확인</li>
+            <li>1인 5,000~7,000엔 가능 여부 확인</li>
+            <li>11월 21일 영업 여부 확인</li>
+            <li>늦은 시간 입장 가능 여부 확인</li>
+            <li>4명 좌석·예약 가능 여부 확인</li>
+          </ul>
+        </article>
+
+        <article class="restaurant-card">
+          <span class="badge candidate">후보</span>
+          <h3>야코스시</h3>
+          <p>초밥 후보</p>
+          <ul class="clean">
+            <li>해산물·초밥 우선 조건에 맞는 후보</li>
+            <li>메뉴 가격 미확인</li>
+            <li>11월 21일 토요일 영업 여부 확인</li>
+            <li>4명 좌석·예약 가능 여부 확인</li>
+            <li>늦은 시간 이용 가능 여부 확인</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="card" style="margin-top:18px;">
+        <span class="badge pending">미정</span>
+        <h3>11월 22일 오타루 점심</h3>
+        <p>
+          <strong>오타루 점심: 현지 결정</strong>
+        </p>
+        <p>
+          해산물 덮밥·초밥·라멘·앙카케 야키소바 중에서
+          현장 영업 여부, 대기시간, 메뉴를 확인해 선택합니다.
+          특정 식당과 가격은 확정하지 않습니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="otaru">
+      <h2>오타루 활동</h2>
+      <div class="grid">
+        <div class="card">
+          <span class="badge confirmed">확정 활동</span>
+          <ul class="clean">
+            <li>오타루 오르골당</li>
+            <li>사카이마치 거리 쇼핑·카페</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <span class="badge candidate">후보 활동</span>
+          <ul class="clean">
+            <li>오타루 운하 산책</li>
+            <li>기타이치 글라스 등 현지 시설</li>
+            <li>운영 여부와 체류시간은 방문 전 확인</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="check">
+      <h2>미정·방문 전 확인 항목</h2>
+      <div class="card">
+        <ul class="clean">
+          <li>실제 항공사명·편명·좌석·예약 정보</li>
+          <li>공항 도착 후 노보리베츠 이동시간</li>
+          <li>노보리베츠·소운쿄 도착 시각</li>
+          <li>패키지 관광지와 자유시간</li>
+          <li>패키지 버스의 비에이 도착 시각</li>
+          <li>비에이 하차 장소와 겨울 코스 집결지 연결 가능 여부</li>
+          <li>비에이 겨울 코스 운영 여부·요금·집결지</li>
+          <li>패키지 버스 캐리어 보관 가능 여부</li>
+          <li>이로리안·야코스시의 영업·좌석·가격·예약 가능 여부</li>
+          <li>오타루 시설 운영 여부와 체류시간</li>
+          <li>항공사별 국제선 수속 및 수하물 위탁 기준</li>
+          <li>방문 전 날씨와 노면 상태</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="sources">
+      <h2>출처 및 확인 기준</h2>
+      <div class="card">
+        <ul class="source-list">
+          <li>
+            <strong>사용자 제공 자료</strong><br>
+            숙소명, 예약 플랜의 호텔 석식 포함 여부, 패키지 일정의 비에이 하차 가능 내용,
+            2026년 11월 22일 17:25 출발 항공편
+          </li>
+          <li>
+            <strong>패키지 참고</strong><br>
+            노랑풍선 북해도 패키지
+            <span class="small">상품번호는 공개 화면에 전체 노출하지 않음</span>
+          </li>
+          <li>
+            <strong>공식·공개 자료 참고 기준</strong><br>
+            비에이 겨울 코스, 호텔, 관광기관의 공개 안내는 여행 전 다시 확인
+          </li>
+          <li>
+            <strong>확인일 안내</strong><br>
+            자료 확인일과 실제 여행일은 다를 수 있습니다.
+            영업시간·가격·좌석·운행 여부는 방문 전 재확인합니다.
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section" id="checklist">
+      <h2>준비물 체크리스트</h2>
+      <p class="section-intro">
+        체크 상태는 이 브라우저와 기기에만 저장됩니다.
+        친구가 체크한 상태가 내 화면에 자동으로 반영되지는 않습니다.
+      </p>
+
+      <div class="checklist-box">
+        <div class="progress-summary">
+          <div>
+            <div class="progress-number" id="progressText">0/22 · 0%</div>
+            <div class="small">완료 비율은 반올림하여 표시합니다.</div>
+          </div>
+          <div class="progress-bar" aria-label="준비물 완료 비율">
+            <div class="progress-fill" id="progressFill"></div>
+          </div>
+        </div>
+
+        <div class="check-group">
+          <h3>개인용 준비물</h3>
+
+          <div class="check-item">
+            <input type="checkbox" id="p01" data-id="p01">
+            <label for="p01">여권 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p02" data-id="p02">
+            <label for="p02">여권 사본 페이지 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p03" data-id="p03">
+            <label for="p03">지갑·해외 결제 카드 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p04" data-id="p04">
+            <label for="p04">휴대전화 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p05" data-id="p05">
+            <label for="p05">충전기·보조배터리 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p06" data-id="p06">
+            <label for="p06">멀티어댑터 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p07" data-id="p07">
+            <label for="p07">개인 상비약 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p08" data-id="p08">
+            <label for="p08">방한용 겉옷 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p09" data-id="p09">
+            <label for="p09">발열 내의 또는 보온 이너 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p10" data-id="p10">
+            <label for="p10">장갑 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p11" data-id="p11">
+            <label for="p11">목도리 또는 넥워머 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p12" data-id="p12">
+            <label for="p12">방한 모자 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p13" data-id="p13">
+            <label for="p13">두꺼운 양말 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p14" data-id="p14">
+            <label for="p14">방수·미끄럼 방지 신발 <span class="print-status"></span></label>
+          </div>
+        </div>
+
+        <div class="check-group">
+          <h3>공통용 준비물</h3>
+
+          <div class="check-item">
+            <input type="checkbox" id="p15" data-id="p15">
+            <label for="p15">휴대용 우산 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p16" data-id="p16">
+            <label for="p16">방수 파우치 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p17" data-id="p17">
+            <label for="p17">물티슈·휴지 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p18" data-id="p18">
+            <label for="p18">지퍼백·비닐봉투 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p19" data-id="p19">
+            <label for="p19">캐리어 식별용 태그 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p20" data-id="p20">
+            <label for="p20">공동 일정·예약 정보 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p21" data-id="p21">
+            <label for="p21">간단한 구급용품 <span class="print-status"></span></label>
+          </div>
+          <div class="check-item">
+            <input type="checkbox" id="p22" data-id="p22">
+            <label for="p22">휴대용 보온용품 <span class="print-status"></span></label>
+          </div>
+        </div>
+
+        <div class="reset-area toolbar print-hide">
+          <button class="button warning" id="resetButton" type="button">이 여행 체크 상태 전체 초기화</button>
+        </div>
+
+        <p class="storage-message" id="storageMessage" role="status" aria-live="polite"></p>
+        <p class="small print-hide">
+          저장 키: hokkaido-2026-11-19-22/checklist<br>
+          file: 환경에서는 저장이 보장되지 않을 수 있습니다.
+          게시된 HTTPS 주소인 GitHub Pages에서 사용하는 것을 권장합니다.
+        </p>
+      </div>
+    </section>
+
+    <section class="section" id="sharing">
+      <h2>공유·인쇄·저장 안내</h2>
+
+      <div class="grid">
+        <div class="card share-box">
+          <h3>공유</h3>
+          <p>
+            게시된 HTTPS 주소에서 현재 페이지 링크를 복사합니다.
+            로컬 파일에서는 GitHub Pages 등에 게시한 뒤 공유해 주세요.
+          </p>
+          <button class="button print-hide" id="shareButtonBottom" type="button">현재 페이지 링크 복사</button>
+
+          <div class="share-fallback" id="shareFallback">
+            <label for="shareUrl">현재 주소를 선택한 뒤 Ctrl+C를 누르세요.</label>
+            <input id="shareUrl" type="text" readonly>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>인쇄·PDF</h3>
+          <p>
+            인쇄 시 버튼과 장식용 눈 일러스트는 숨겨지고,
+            현재 체크 상태는 “준비 완료” 또는 “미준비”로 표시됩니다.
+          </p>
+          <p class="small">
+            인쇄·PDF는 읽는 기록이며, 다른 기기에서 체크 상태를 복원하는 파일이 아닙니다.
+          </p>
+          <button class="button secondary print-hide" id="printButtonBottom" type="button">인쇄 미리보기 열기</button>
+        </div>
+      </div>
+
+      <div class="notice">
+        <strong>체크 상태 저장 안내</strong><br>
+        이 체크리스트는 브라우저별·기기별로 저장됩니다.
+        친구들과 자동 동기화되지 않으며, 다른 여행의 저장 데이터는 삭제하지 않습니다.
+      </div>
+    </section>
+
+    <footer>
+      <strong>2026 홋카이도 겨울 여행 공유 페이지</strong><br>
+      확정된 내용과 후보·미정 내용을 구분해 표시한 개인 여행 기록입니다.
+      방문 전 영업·운행·가격·날씨·노면·패키지 일정을 다시 확인하세요.
+    </footer>
+  </main>
+
+  <script>
+    (function () {
+      "use strict";
+
+      const STORAGE_KEY = "hokkaido-2026-11-19-22/checklist";
+      const checkboxes = Array.from(document.querySelectorAll("input[data-id]"));
+      const progressText = document.getElementById("progressText");
+      const progressFill = document.getElementById("progressFill");
+      const storageMessage = document.getElementById("storageMessage");
+      const shareFallback = document.getElementById("shareFallback");
+      const shareUrl = document.getElementById("shareUrl");
+
+      let storageAvailable = true;
+
+      function showStorageMessage(message) {
+        storageMessage.textContent = message || "";
+      }
+
+      function canUseStorage() {
+        try {
+          const testKey = "__hokkaido_storage_test__";
+          localStorage.setItem(testKey, "ok");
+          localStorage.removeItem(testKey);
+          return true;
+        } catch (error) {
+          return false;
+        }
+      }
+
+      function getCheckedIds() {
+        return checkboxes
+          .filter(function (checkbox) {
+            return checkbox.checked;
+          })
+          .map(function (checkbox) {
+            return checkbox.dataset.id;
+          });
+      }
+
+      function saveState() {
+        if (!storageAvailable) {
+          return;
+        }
+
+        try {
+          const validIds = new Set(checkboxes.map(function (checkbox) {
+            return checkbox.dataset.id;
+          }));
+
+          const checkedIds = getCheckedIds().filter(function (id) {
+            return validIds.has(id);
+          });
+
+          localStorage.setItem(STORAGE_KEY, JSON.stringify({
+            version: 1,
+            checkedIds: checkedIds
+          }));
+
+          showStorageMessage("");
+        } catch (error) {
+          storageAvailable = false;
+          showStorageMessage("이 브라우저에서는 체크 상태 저장이 제한될 수 있습니다. 체크와 인쇄 기능은 계속 사용할 수 있습니다.");
+        }
+      }
+
+      function loadState() {
+        if (!canUseStorage()) {
+          storageAvailable = false;
+          showStorageMessage("이 브라우저에서는 체크 상태 저장이 제한될 수 있습니다. 체크와 인쇄 기능은 계속 사용할 수 있습니다.");
+          return;
+        }
+
+        try {
+          const raw = localStorage.getItem(STORAGE_KEY);
+
+          if (!raw) {
+            return;
+          }
+
+          const parsed = JSON.parse(raw);
+
+          if (
+            !parsed ||
+            !Array.isArray(parsed.checkedIds)
+          ) {
+            throw new Error("손상된 저장 데이터");
+          }
+
+          const validIds = new Set(checkboxes.map(function (checkbox) {
+            return checkbox.dataset.id;
+          }));
+
+          checkboxes.forEach(function (checkbox) {
+            checkbox.checked = parsed.checkedIds.includes(checkbox.dataset.id) &&
+              validIds.has(checkbox.dataset.id);
+          });
+
+          showStorageMessage("");
+        } catch (error) {
+          checkboxes.forEach(function (checkbox) {
+            checkbox.checked = false;
+          });
+
+          showStorageMessage("저장된 체크 데이터가 손상되어 기본 미체크 상태로 표시했습니다. 체크 기능은 계속 사용할 수 있습니다.");
+        }
+      }
+
+      function updateProgress() {
+        const total = checkboxes.length;
+        const completed = checkboxes.filter(function (checkbox) {
+          return checkbox.checked;
+        }).length;
+
+        const percent = total === 0
+          ? 0
+          : Math.round((completed / total) * 100);
+
+        progressText.textContent = completed + "/" + total + " · " + percent + "%";
+        progressFill.style.width = percent + "%";
+        progressFill.setAttribute("aria-valuenow", String(percent));
+      }
+
+      function handleCheckChange() {
+        updateProgress();
+        saveState();
+      }
+
+      function resetChecklist() {
+        const confirmed = window.confirm(
+          "이 여행의 준비물 체크 상태만 초기화합니다.\n다른 여행이나 다른 저장 키는 삭제하지 않습니다."
+        );
+
+        if (!confirmed) {
+          return;
+        }
+
+        checkboxes.forEach(function (checkbox) {
+          checkbox.checked = false;
+        });
+
+        updateProgress();
+
+        if (storageAvailable) {
+          try {
+            localStorage.removeItem(STORAGE_KEY);
+            showStorageMessage("");
+          } catch (error) {
+            storageAvailable = false;
+            showStorageMessage("체크 상태를 초기화했지만 브라우저 저장소에 반영하지 못했습니다.");
+          }
+        }
+      }
+
+      function isLocalFile() {
+        return window.location.protocol === "file:";
+      }
+
+      async function copyShareUrl() {
+        if (isLocalFile()) {
+          shareFallback.style.display = "block";
+          shareUrl.value = window.location.href;
+          shareUrl.focus();
+          shareUrl.select();
+          window.alert("로컬 파일은 바로 공유하지 말고 GitHub Pages 등에 게시한 뒤 공유해 주세요.");
+          return;
+        }
+
+        const currentUrl = window.location.href;
+
+        try {
+          if (!navigator.clipboard || !window.isSecureContext) {
+            throw new Error("클립보드 API 사용 불가");
+          }
+
+          await navigator.clipboard.writeText(currentUrl);
+          window.alert("현재 페이지 링크를 복사했습니다.");
+        } catch (error) {
+          shareFallback.style.display = "block";
+          shareUrl.value = currentUrl;
+          shareUrl.focus();
+          shareUrl.select();
+          window.alert("자동 복사에 실패했습니다. 주소를 선택했으니 Ctrl+C로 복사해 주세요.");
+        }
+      }
+
+      function printPage() {
+        window.print();
+      }
+
+      checkboxes.forEach(function (checkbox) {
+        checkbox.addEventListener("change", handleCheckChange);
+      });
+
+      document.getElementById("resetButton").addEventListener("click", resetChecklist);
+      document.getElementById("shareButton").addEventListener("click", copyShareUrl);
+      document.getElementById("shareButtonBottom").addEventListener("click", copyShareUrl);
+      document.getElementById("printButton").addEventListener("click", printPage);
+      document.getElementById("printButtonBottom").addEventListener("click", printPage);
+
+      loadState();
+      updateProgress();
+    }());
+  </script>
+</body>
+</html>
